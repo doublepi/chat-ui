@@ -1,15 +1,24 @@
 .user-list {
   height: 100%;
   overflow: auto;
-  padding-left: 5px;
-  padding-top: 8px;
+  padding-left: 20px;
+  padding-top: 20px;
 }
+
+.info-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .img-msg {
   border-radius: 50%;
-  width: 50px;
+  width: 35px;
   margin-right: 5px;
 }
 .user-element {
-  font-size: 20px;
+  font-size: 15px;
   vertical-align: middle;
+  display: inline;
 }

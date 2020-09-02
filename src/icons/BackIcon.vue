@@ -3,7 +3,9 @@
     <button @click="_handleClick" class="sc-user-input--back-icon-wrapper" type="button">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
-          <path d="M464.344,207.418l0.768,0.168H135.888l103.496-103.724c5.068-5.064,7.848-11.924,7.848-19.124
+          <path :style="{
+            fill: `${colors.header.text}`
+          }" d="M464.344,207.418l0.768,0.168H135.888l103.496-103.724c5.068-5.064,7.848-11.924,7.848-19.124
             c0-7.2-2.78-14.012-7.848-19.088L223.28,49.538c-5.064-5.064-11.812-7.864-19.008-7.864c-7.2,0-13.952,2.78-19.016,7.844
             L7.844,226.914C2.76,231.998-0.02,238.77,0,245.974c-0.02,7.244,2.76,14.02,7.844,19.096l177.412,177.412
             c5.064,5.06,11.812,7.844,19.016,7.844c7.196,0,13.944-2.788,19.008-7.844l16.104-16.112c5.068-5.056,7.848-11.808,7.848-19.008
@@ -16,6 +18,10 @@
 
 <script>
 export default {
+  props: {
+    colors: Object,
+    required: true,
+  },
   methods: {
     _handleClick(e) {
       this.$emit('click');
@@ -27,8 +33,8 @@ export default {
 <style scoped>
 .back-icon {
   position: relative;
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);

@@ -9,6 +9,7 @@
         class="sc-header--back"
       >
         <BackIcon
+          :colors="colors"
           @click="onClickBack"
         />
       </div>
@@ -18,6 +19,9 @@
         <button
           class="sc-header--more"
           @click="toggleAction"
+          :style="{
+            color: `${colors.header.text}`
+          }"
         >
         </button>
         <Actions

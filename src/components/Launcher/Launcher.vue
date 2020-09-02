@@ -25,8 +25,8 @@
       @edit="$emit('edit', $event)"
       @remove="$emit('remove', $event)"
     >
-      <template v-slot:header>
-        <slot name="header"> </slot>
+      <template v-slot:header="scopedProps">
+        <slot name="header" :onClick="scopedProps.onClick" :toggleAction="scopedProps.toggleAction"> </slot>
       </template>
       <template v-slot:user-avatar="scopedProps">
         <slot name="user-avatar" :user="scopedProps.user" :message="scopedProps.message"> </slot>

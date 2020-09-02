@@ -12,8 +12,8 @@
       :actions="actions"
       @back="onClickBack"
     >
-      <template>
-        <slot name="header"> </slot>
+      <template v-slot:header="scopedProps">
+        <slot name="header" :onClick="scopedProps.onClick" :toggleAction="scopedProps.toggleAction"> </slot>
       </template>
     </Header>
     <Info v-if="showInfo" :colors="colors" :participants="users" />

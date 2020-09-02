@@ -19,6 +19,7 @@
       </button>
     </template>
     <slot :message="message" :messageText="messageText" :messageColors="messageColors" :me="me">
+      <p class="sc-message--text-author"> {{ message.author }}</p>
       <p class="sc-message--text-content" v-html="messageText"></p>
       <p v-if="message.data.meta" class="sc-message--meta" :style="{color: messageColors.color}">
         {{ message.data.meta }}

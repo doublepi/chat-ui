@@ -88,9 +88,6 @@ export default {
           bg: '#4e8cff',
           text: '#ffffff'
         },
-        launcher: {
-          bg: '#4e8cff'
-        },
         messageList: {
           bg: '#ffffff'
         },
@@ -145,10 +142,6 @@ export default {
 For more detailed examples see the demo folder.
 
 ## Components
-
-### Launcher
-
-`Launcher` is the only component needed to use chat-ui. It will react dynamically to changes in messages. All new messages must be added via a change in props as shown in the example.
 
 #### Props
 
@@ -331,9 +324,6 @@ let redColors = {
   header: {
     bg: '#D32F2F',
     text: '#fff'
-  },
-  launcher: {
-    bg: '#D32F2F'
   },
   messageList: {
     bg: '#fff'

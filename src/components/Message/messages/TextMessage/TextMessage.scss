@@ -10,12 +10,16 @@ a.chatLink {
   position: absolute;
   right: 0;
   color: white;
-  top: 10px;
 }
 
 .sc-message--more:after {
   content: '\2807';
   font-size: 25px;
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+}
+
+.sc-message--text-author {
+  font-weight: 700;
 }
 
 .sc-message--actions {

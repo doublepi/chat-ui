@@ -3,7 +3,7 @@
 
 <template>
   <div class="sc-header" :style="{background: colors.header.bg, color: colors.header.text}">
-    <slot>
+    <slot name="header" :onClick="onClickBack" :toggleAction="toggleAction">
       <div
         v-if="isInfo"
         class="sc-header--back"
@@ -14,7 +14,7 @@
         />
       </div>
       <img v-if="imageUrl && !isInfo" class="sc-header--img" :src="imageUrl" alt="" />
-      <div class="sc-header--title">{{ title }}</div>
+      <p class="sc-header--title">{{ title }}</p>
       <div class="sc-actions">
         <button
           class="sc-header--more"

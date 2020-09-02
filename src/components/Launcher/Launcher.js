@@ -24,10 +24,6 @@ export default {
       type: Boolean,
       default: false
     },
-    showLauncher: {
-      type: Boolean,
-      default: true
-    },
     showHeader: {
       type: Boolean,
       default: true
@@ -74,8 +70,6 @@ export default {
         'header' in c &&
         'bg' in c.header &&
         'text' in c.header &&
-        'launcher' in c &&
-        'bg' in c.launcher &&
         'messageList' in c &&
         'bg' in c.messageList &&
         'sentMessage' in c &&
@@ -92,9 +86,6 @@ export default {
           header: {
             bg: '#ffffff',
             text: '#0a0a0a'
-          },
-          launcher: {
-            bg: '#4e8cff'
           },
           messageList: {
             bg: '#ffffff'

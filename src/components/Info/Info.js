@@ -9,15 +9,4 @@ export default {
       default: () => ({})
     }
   },
-  computed: {
-    userListColor() {
-      const defaultColors = {
-        userList: {
-          bg: '#FFFFFF',
-          text: '#000000'
-        }
-      }
-      return Object.assign(defaultColors, this.colors)
-    }
-  },
 }

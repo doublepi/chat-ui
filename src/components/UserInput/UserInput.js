@@ -1,9 +1,6 @@
-import EmojiIcon from '../../icons/EmojiIcon.vue'
-import FileIcons from '../../icons/FileIcons.vue'
 import UserInputButton from './UserInputButton/UserInputButton.vue'
 import Suggestions from './Suggestions/Suggestions.vue'
 import ReplyMessage from './ReplyMessage/ReplyMessage.vue'
-import FileIcon from '../../assets/file.svg'
 import CloseIconSvg from '../../assets/close.svg'
 import store from '../../store/'
 import IconCross from '../IconBase/icons/IconCross.vue'
@@ -12,8 +9,6 @@ import IconSend from '../IconBase/icons/IconSend.vue'
 
 export default {
   components: {
-    EmojiIcon,
-    FileIcons,
     UserInputButton,
     Suggestions,
     IconCross,
@@ -26,10 +21,6 @@ export default {
       type: Object,
       default: function () {
         return {
-          file: {
-            img: FileIcon,
-            name: 'default'
-          },
           closeSvg: {
             img: CloseIconSvg,
             name: 'default'
@@ -100,9 +91,6 @@ export default {
     })
   },
   methods: {
-    cancelFile() {
-      this.file = null
-    },
     setInputActive(onoff) {
       this.inputActive = onoff
     },
@@ -135,51 +123,23 @@ export default {
         Promise.resolve(success).then(
           function (wasSuccessful) {
             if (wasSuccessful === undefined || wasSuccessful) {
-              this.file = null
               this.$refs.userInput.innerHTML = ''
               store.replyMessage = null;
             }
           }.bind(this)
         )
       } else {
-        this.file = null
         this.$refs.userInput.innerHTML = ''
       }
     },
     _submitText(event) {
       const text = this.$refs.userInput.textContent
-      const file = this.file
-      if (file) {
-        this._submitTextWhenFile(event, text, file)
-      } else {
-        if (text && text.length > 0) {
-          this._checkSubmitSuccess(
-            this.onSubmit({
-              author: store.sender.id,
-              type: 'text',
-              data: { text },
-              reply: this.replyMessageId
-            })
-          )
-        }
-      }
-    },
-    _submitTextWhenFile(event, text, file) {
       if (text && text.length > 0) {
         this._checkSubmitSuccess(
           this.onSubmit({
             author: store.sender.id,
-            type: 'file',
-            data: { text, file },
-            reply: this.replyMessageId
-          })
-        )
-      } else {
-        this._checkSubmitSuccess(
-          this.onSubmit({
-            author: store.sender.id,
-            type: 'file',
-            data: { file },
+            type: 'text',
+            data: { text },
             reply: this.replyMessageId
           })
         )
@@ -197,19 +157,6 @@ export default {
         })
         this._editFinish()
       }
-    },
-    _handleEmojiPicked(emoji) {
-      this._checkSubmitSuccess(
-        this.onSubmit({
-          author: store.sender.id,
-          type: 'text',
-          data: { text: emoji },
-          reply: this.replyMessageId
-        })
-      )
-    },
-    _handleFileSubmit(file) {
-      this.file = file
     },
     _editFinish() {
       this.store.editMessage = null

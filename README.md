@@ -35,11 +35,8 @@ Vue.use(ChatUI)
       :titleImageUrl="titleImageUrl"
       :onMessageWasSent="onMessageWasSent"
       :messageList="messageList"
-      :newMessagesCount="newMessagesCount"
       :isOpen="isChatOpen"
       :icons="icons"
-      :showEmoji="true"
-      :showFile="true"
       :showTypingIndicator="showTypingIndicator"
       :colors="colors"
       :alwaysScrollToBottom="alwaysScrollToBottom"
@@ -78,7 +75,6 @@ export default {
           { type: 'text', author: `me`, data: { text: `Say yes!` } },
           { type: 'text', author: `user1`, data: { text: `No.` } }
       ], // the list of the messages to show, can be paginated and adjusted dynamically
-      newMessagesCount: 0,
       showTypingIndicator: '', // when set to a value matching the participant.id it shows the typing indicator for the specific user
       colors: {
         header: {
@@ -111,7 +107,6 @@ export default {
   methods: {
     sendMessage (text) {
       if (text.length > 0) {
-        this.newMessagesCount = this.isChatOpen ? this.newMessagesCount : this.newMessagesCount + 1
         this.onMessageWasSent({ author: 'support', type: 'text', data: { text } })
       }
     },
@@ -146,8 +141,6 @@ For more detailed examples see the demo folder.
 | *participants       | [agentProfile]    | Represents your product or service's customer service agents. Fields for each agent: id, name, imageUrl |
 | *onMessageWasSent   | function(message) | Called when a message a message is sent with a message object as an argument.                           |
 | messageList         | [message]         | An array of message objects to be rendered as a conversation.                                           |
-| showEmoji           | Boolean           | A bool indicating whether or not to show the emoji button                                               |
-| showFile            | Boolean           | A bool indicating whether or not to show the file chooser button                                        |
 | showTypingIndicator | String            | A string that can be set to a user's participant.id to show `typing` indicator for them                 |
 | showHeader          | Boolean           | A bool indicating whether or not to show the header of chatwindow                                       |
 | colors              | Object            | An object containing the specs of the colors used to paint the component. [See here](#faq)              |

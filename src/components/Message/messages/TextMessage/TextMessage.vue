@@ -30,6 +30,10 @@
       <p v-if="message.data.meta" class="sc-message--meta" :style="{color: messageColors.color}">
         {{ message.data.meta }}
       </p>
+      <QuickActions
+        :message="message"
+        :actions="quickActions"
+      />
     </slot>
   </div>
 </template>

@@ -17,6 +17,9 @@ export default {
       type: Object,
       required: true
     },
+    quickActions: {
+      type: Array,
+    },
     colors: {
       type: Object,
       required: true

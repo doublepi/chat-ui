@@ -6,12 +6,11 @@
     <ChatWindow
       :message-list="messageList"
       :sender="sender"
+      :quickActions="quickActions"
       :on-user-input-submit="onMessageWasSent"
       :participants="participants"
       :title="chatWindowTitle"
       :title-image-url="titleImageUrl"
-      :show-emoji="showEmoji"
-      :show-file="showFile"
       :show-header="showHeader"
       :placeholder="placeholder"
       :show-typing-indicator="showTypingIndicator"

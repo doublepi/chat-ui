@@ -25,10 +25,6 @@ export default {
       type: Object,
       required: true
     },
-    chosenColor: {
-      type: String,
-      required: true
-    },
   },
   data() {
     return {
@@ -50,18 +46,18 @@ export default {
       return this.colors.sentMessage.text
     },
     backgroundColor() {
-      return this.chosenColor === 'dark' ? this.colors.messageList.bg : '#fff'
+      return this.colors.messageList.bg
     },
     textColor() {
-      return this.chosenColor === 'dark' ? '#eee' : '#222'
+      return '#222';
     },
     ctaColor() {
       return this.colors.userInput.bg
     },
     textareaStyle() {
       return {
-        background: this.chosenColor === 'dark' ? this.colors.messageList.bg : '#fff',
-        color: this.chosenColor === 'dark' ? this.colors.sentMessage.text : '#222'
+        background: '#fff',
+        color: '#222'
       }
     }
   },

@@ -8,14 +8,6 @@ export default {
     icons: {
       type: Object,
     },
-    showEmoji: {
-      type: Boolean,
-      default: false
-    },
-    showFile: {
-      type: Boolean,
-      default: false
-    },
     showHeader: {
       type: Boolean,
       default: true
@@ -43,10 +35,6 @@ export default {
     messageList: {
       type: Array,
       default: () => []
-    },
-    newMessagesCount: {
-      type: Number,
-      default: () => 0
     },
     placeholder: {
       type: String,
@@ -104,6 +92,9 @@ export default {
     alwaysScrollToBottom: {
       type: Boolean,
       default: () => false
+    },
+    quickActions: {
+      type: Array
     },
   },
   computed: {

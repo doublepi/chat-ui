@@ -30,6 +30,7 @@
           :message="message"
           :reply="reply"
           :colors="colors"
+          :quickActions="quickActions"
           @remove="$emit('remove')"
         >
           <template v-slot:default="scopedProps">

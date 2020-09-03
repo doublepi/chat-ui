@@ -27,6 +27,7 @@
       :participants="users"
       :show-typing-indicator="showTypingIndicator"
       :colors="colors"
+      :quickActions="quickActions"
       :always-scroll-to-bottom="alwaysScrollToBottom"
       @scrollToTop="$emit('scrollToTop')"
       @remove="$emit('remove', $event)"

@@ -26,6 +26,9 @@ export default {
       type: Boolean,
       required: true
     },
+    quickActions: {
+      type: Array,
+    },
   },
   computed: {
     defaultChatIcon() {

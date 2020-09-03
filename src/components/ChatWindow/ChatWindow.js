@@ -12,14 +12,6 @@ export default {
     Info
   },
   props: {
-    showEmoji: {
-      type: Boolean,
-      default: false
-    },
-    showFile: {
-      type: Boolean,
-      default: false
-    },
     sender: {
       type: Object,
       required: true,
@@ -63,6 +55,9 @@ export default {
     alwaysScrollToBottom: {
       type: Boolean,
       required: true
+    },
+    quickActions: {
+      type: Array,
     },
   },
   data() {

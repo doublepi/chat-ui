@@ -14,6 +14,7 @@
       :message="message"
       :user="profile(message.author)"
       :colors="colors"
+      :quickActions="quickActions"
       :reply="replyMessage(message.reply)"
       @remove="$emit('remove', message)"
     >

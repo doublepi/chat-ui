@@ -1,21 +1,18 @@
 <template>
   <div :style="{background: backgroundColor}">
     <Header
-      :chosenColor="chosenColor"
       :colors="colors"
     />
     <chat-ui
       :alwaysScrollToBottom="alwaysScrollToBottom"
       :colors="colors"
       :messageList="messageList"
-      :newMessagesCount="newMessagesCount"
       :onMessageWasSent="onMessageWasSent"
       :participants="participants"
-      :showEmoji="true"
-      :showFile="true"
       :showTypingIndicator="showTypingIndicator"
       :sender="sender"
       :titleImageUrl="titleImageUrl"
+      :quickActions="quickActions"
       @onType="handleOnType"
       @edit="editMessage"
       @reply="replyMessage"
@@ -27,7 +24,6 @@
     </chat-ui>
     <v-dialog/>
     <TestArea
-      :chosenColor="chosenColor"
       :colors="colors"
       :onMessage="sendMessage"
       :onTyping="handleTyping"
@@ -54,14 +50,17 @@ export default {
       titleImageUrl:
         'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
       messageList: messageHistory,
-      newMessagesCount: 0,
-      isChatOpen: true,
       showTypingIndicator: '',
-      colors: null,
+      colors: availableColors.blue,
       availableColors,
-      chosenColor: null,
       alwaysScrollToBottom: true,
       userIsTyping: false,
+      quickActions: [
+        {
+          label: "Translate",
+          onClick: this.translateMessage,
+        },
+      ],
       sender: {
         id: 'giuliandrimba',
         name: 'Giulian Drimba',
@@ -69,15 +68,9 @@ export default {
       }
     }
   },
-  created() {
-    this.setColor('blue')
-  },
   methods: {
     sendMessage(text) {
       if (text.length > 0) {
-        this.newMessagesCount = this.isChatOpen
-          ? this.newMessagesCount
-          : this.newMessagesCount + 1
         this.onMessageWasSent({
           author: 'support',
           type: 'text',
@@ -95,20 +88,12 @@ export default {
     onMessageWasSent(message) {
       this.messageList = [...this.messageList, Object.assign({}, message, {id: Math.random()})]
     },
-    setColor(color) {
-      this.colors = this.availableColors[color]
-      this.chosenColor = color
-    },
-    showStylingInfo() {
-      this.$modal.show('dialog', {
-        title: 'Info',
-        text:
-          'You can use *word* to <strong>boldify</strong>, /word/ to <em>emphasize</em>, _word_ to <u>underline</u>, `code` to <code>write = code;</code>, ~this~ to <del>delete</del> and ^sup^ or ¡sub¡ to write <sup>sup</sup> and <sub>sub</sub>'
-      })
-    },
     handleOnType() {
       this.$root.$emit('onType')
       this.userIsTyping = true
+    },
+    translateMessage(message) {
+      console.log('translate message', message);
     },
     replyMessage(message, replyID){
       console.log("replyMessage");
@@ -139,7 +124,7 @@ export default {
       return this.colors.sentMessage.text;
     },
     backgroundColor() {
-      return this.chosenColor === 'dark' ? this.colors.messageList.bg : '#fff'
+      return this.colors.messageList.bg;
     }
   },
   mounted(){

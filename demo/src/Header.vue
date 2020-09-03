@@ -11,10 +11,6 @@ export default {
       type: Object,
       required: true
     },
-    chosenColor: {
-      type: String,
-      required: true
-    }
   },
   computed: {
     linkColor() {

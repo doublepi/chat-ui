@@ -5,6 +5,7 @@ import IconReply from '../../../IconBase/icons/IconReply.vue'
 import escapeGoat from 'escape-goat'
 import Autolinker from 'autolinker'
 import Actions from '../../../Actions/Actions.vue'
+import QuickActions from '../../../QuickActions/QuickActions.vue'
 import store from '../../../../store/'
 import ReplyMessage from '../ReplyMessage/ReplyMessage.vue'
 const fmt = require('msgdown')
@@ -17,8 +18,13 @@ export default {
     IconReply,
     Actions,
     ReplyMessage,
+    QuickActions,
   },
   props: {
+    quickActions: {
+      type: Array,
+      required: false
+    },
     colors: {
       type: Object,
       required: true
@@ -49,7 +55,7 @@ export default {
           label: "Reply",
           onClick: this.replyMessage,
         }
-      ]
+      ],
     }
   },
   computed: {
@@ -95,6 +101,9 @@ export default {
     },
     replyMessage() {
       this.store.replyMessage = this.message
+    },
+    translate() {
+      this.$emit('translate');
     }
   }
 }

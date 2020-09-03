@@ -37,10 +37,6 @@ export default {
         }
       }
     },
-    showEmoji: {
-      type: Boolean,
-      default: () => false
-    },
     suggestions: {
       type: Array,
       default: () => []

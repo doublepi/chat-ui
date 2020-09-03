@@ -29,10 +29,6 @@ export default {
       type: String,
       required: true
     },
-    messageStyling: {
-      type: Boolean,
-      required: true
-    }
   },
   data() {
     return {

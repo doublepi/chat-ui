@@ -40,12 +40,9 @@ Vue.use(ChatUI)
       :icons="icons"
       :showEmoji="true"
       :showFile="true"
-      :showEdition="true"
-      :showDeletion="true"
       :showTypingIndicator="showTypingIndicator"
       :colors="colors"
       :alwaysScrollToBottom="alwaysScrollToBottom"
-      :messageStyling="messageStyling"
       @onType="handleOnType"
       @edit="editMessage" />
   </div>
@@ -109,7 +106,6 @@ export default {
         }
       }, // specifies the color scheme for the component
       alwaysScrollToBottom: false, // when set to true always scrolls the chat to the bottom when new events are in (new message, user starts typing...)
-      messageStyling: true // enables *bold* /emph/ _underline_ and such (more info at github.com/mattezza/msgdown)
     }
   },
   methods: {
@@ -145,19 +141,16 @@ For more detailed examples see the demo folder.
 
 #### Props
 
-| prop                | type              | description                                                                                                   |
-| ------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| *participants       | [agentProfile]    | Represents your product or service's customer service agents. Fields for each agent: id, name, imageUrl       |
-| *onMessageWasSent   | function(message) | Called when a message a message is sent with a message object as an argument.                                 |
-| messageList         | [message]         | An array of message objects to be rendered as a conversation.                                                 |
-| showEmoji           | Boolean           | A bool indicating whether or not to show the emoji button                                                     |
-| showFile            | Boolean           | A bool indicating whether or not to show the file chooser button                                              |
-| showDeletion        | Boolean           | A bool indicating whether or not to show the edit button for a message                                        |
-| showEdition         | Boolean           | A bool indicating whether or not to show the delete button for a message                                      |
-| showTypingIndicator | String            | A string that can be set to a user's participant.id to show `typing` indicator for them                       |
-| showHeader          | Boolean           | A bool indicating whether or not to show the header of chatwindow                                             |
-| colors              | Object            | An object containing the specs of the colors used to paint the component. [See here](#faq)                    |
-| messageStyling      | Boolean           | A bool indicating whether or not to enable `msgdown` support for message formatting in chat. [See here](#faq) |
+| prop                | type              | description                                                                                             |
+| ------------------- | ----------------- | ------------------------------------------------------------------------------------------------------- |
+| *participants       | [agentProfile]    | Represents your product or service's customer service agents. Fields for each agent: id, name, imageUrl |
+| *onMessageWasSent   | function(message) | Called when a message a message is sent with a message object as an argument.                           |
+| messageList         | [message]         | An array of message objects to be rendered as a conversation.                                           |
+| showEmoji           | Boolean           | A bool indicating whether or not to show the emoji button                                               |
+| showFile            | Boolean           | A bool indicating whether or not to show the file chooser button                                        |
+| showTypingIndicator | String            | A string that can be set to a user's participant.id to show `typing` indicator for them                 |
+| showHeader          | Boolean           | A bool indicating whether or not to show the header of chatwindow                                       |
+| colors              | Object            | An object containing the specs of the colors used to paint the component. [See here](#faq)              |
 
 #### Events
 
@@ -357,10 +350,4 @@ Please note that you need to pass an Object containing each one of the color pro
 
 </p>
 </details>
-<details><summary>How can I add message formatting?</summary>
-<p>
-
-Good news, message formatting is already added for you. You can enable it by setting `messageStyling` to `true` and you will be using the [msgdown](https://github.com/mattmezza/msgdown) library. You can enable/disable the formatting support at any time, or you can let users do it whenever they prefer.
-
-</p>
 </details>

@@ -2,7 +2,7 @@
 <script src="./TypingMessage.js"></script>
 
 <template>
-  <div class="sc-typing-indicator" :style="messageColors">
+  <div class="sc-typing-indicator" :style="{color: colors.receivedMessage.text}">
     <span></span>
     <span></span>
     <span></span>

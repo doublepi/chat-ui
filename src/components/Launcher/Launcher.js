@@ -12,14 +12,6 @@ export default {
       type: Boolean,
       default: false
     },
-    showEdition: {
-      type: Boolean,
-      default: false
-    },
-    showDeletion: {
-      type: Boolean,
-      default: false
-    },
     showFile: {
       type: Boolean,
       default: false
@@ -110,10 +102,6 @@ export default {
       }
     },
     alwaysScrollToBottom: {
-      type: Boolean,
-      default: () => false
-    },
-    messageStyling: {
       type: Boolean,
       default: () => false
     },

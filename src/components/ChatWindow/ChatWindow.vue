@@ -16,7 +16,11 @@
         <slot name="header" :onClick="scopedProps.onClick" :toggleAction="scopedProps.toggleAction"> </slot>
       </template>
     </Header>
-    <Info v-if="showInfo" :colors="colors" :participants="users" />
+    <Info v-if="showInfo" :colors="colors" :participants="users">
+      <template v-slot:info="scopedProps">
+        <slot name="info" :participants="scopedProps.participants"></slot>
+      </template>
+    </Info>
     <MessageList
       v-if="!showInfo"
       :messages="messages"
@@ -24,9 +28,6 @@
       :show-typing-indicator="showTypingIndicator"
       :colors="colors"
       :always-scroll-to-bottom="alwaysScrollToBottom"
-      :show-edition="showEdition"
-      :show-deletion="showDeletion"
-      :message-styling="messageStyling"
       @scrollToTop="$emit('scrollToTop')"
       @remove="$emit('remove', $event)"
     >
@@ -38,7 +39,7 @@
           name="text-message-body"
           :message="scopedProps.message"
           :messageText="scopedProps.messageText"
-          :messageColors="scopedProps.messageColors"
+          :colors="scopedProps.colors"
           :me="scopedProps.me"
         >
         </slot>
@@ -46,17 +47,12 @@
       <template v-slot:system-message-body="scopedProps">
         <slot name="system-message-body" :message="scopedProps.message"> </slot>
       </template>
-      <template v-slot:text-message-toolbox="scopedProps">
-        <slot name="text-message-toolbox" :message="scopedProps.message" :me="scopedProps.me">
-        </slot>
-      </template>
     </MessageList>
+
     <UserInput
       v-if="!showInfo"
-      :show-emoji="showEmoji"
       :on-submit="onUserInputSubmit"
       :suggestions="getSuggestions()"
-      :show-file="showFile"
       :placeholder="placeholder"
       :colors="colors"
       @onType="$emit('onType')"

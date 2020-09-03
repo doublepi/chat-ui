@@ -14,9 +14,6 @@
       :message="message"
       :user="profile(message.author)"
       :colors="colors"
-      :message-styling="messageStyling"
-      :show-edition="showEdition"
-      :show-deletion="showDeletion"
       :reply="replyMessage(message.reply)"
       @remove="$emit('remove', message)"
     >
@@ -28,7 +25,7 @@
           name="text-message-body"
           :message="scopedProps.message"
           :messageText="scopedProps.messageText"
-          :messageColors="scopedProps.messageColors"
+          :colors="scopedProps.colors"
           :me="scopedProps.me"
         >
         </slot>
@@ -46,9 +43,6 @@
       :message="{author: showTypingIndicator, type: 'typing'}"
       :user="profile(showTypingIndicator)"
       :colors="colors"
-      :message-styling="messageStyling"
-      :show-edition="showEdition"
-      :show-deletion="showDeletion"
     />
   </div>
 </template>

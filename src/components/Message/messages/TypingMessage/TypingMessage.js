@@ -1,6 +1,6 @@
 export default {
   props: {
-    messageColors: {
+    colors: {
       type: Object,
       required: true
     }

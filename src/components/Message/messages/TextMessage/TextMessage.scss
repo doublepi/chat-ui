@@ -12,6 +12,10 @@ a.chatLink {
   color: white;
 }
 
+.sc-message--text-content {
+  margin: 0;
+}
+
 .sc-message--more:after {
   content: '\2807';
   font-size: 25px;
@@ -20,6 +24,7 @@ a.chatLink {
 
 .sc-message--text-author {
   font-weight: 700;
+  margin: 0;
 }
 
 .sc-message--actions {

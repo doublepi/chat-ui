@@ -6,6 +6,7 @@ import escapeGoat from 'escape-goat'
 import Autolinker from 'autolinker'
 import Actions from '../../../Actions/Actions.vue'
 import store from '../../../../store/'
+import ReplyMessage from '../ReplyMessage/ReplyMessage.vue'
 const fmt = require('msgdown')
 
 export default {
@@ -15,27 +16,20 @@ export default {
     IconEdit,
     IconReply,
     Actions,
+    ReplyMessage,
   },
   props: {
+    colors: {
+      type: Object,
+      required: true
+    },
     message: {
       type: Object,
       required: true
     },
-    messageColors: {
+    reply: {
       type: Object,
-      required: true
-    },
-    messageStyling: {
-      type: Boolean,
-      required: true
-    },
-    showEdition: {
-      type: Boolean,
-      required: true
-    },
-    showDeletion: {
-      type: Boolean,
-      required: true
+      required: false
     }
   },
   data() {
@@ -53,7 +47,7 @@ export default {
         },
         {
           label: "Reply",
-          onClick: this.reply,
+          onClick: this.replyMessage,
         }
       ]
     }
@@ -62,13 +56,28 @@ export default {
     messageText() {
       const escaped = escapeGoat.escape(this.message.data.text)
 
-      return Autolinker.link(this.messageStyling ? fmt(escaped) : escaped, {
+      return Autolinker.link(escaped, {
         className: 'chatLink',
         truncate: { length: 50, location: 'smart' }
       })
     },
+    receivedColorsStyle() {
+      return {
+        color: this.colors.receivedMessage.text,
+        backgroundColor: this.colors.receivedMessage.bg
+      }
+    },
+    sentColorsStyle() {
+      return {
+        color: this.colors.sentMessage.text,
+        backgroundColor: this.colors.sentMessage.bg
+      }
+    },
+    messageColors() {
+      return this.message.author === store.sender.id ? this.sentColorsStyle : this.receivedColorsStyle
+    },
     me() {
-      return this.message.author === 'me'
+      return this.message.author === store.sender.id;
     },
     isEditing() {
       return (store.editMessage && store.editMessage.id) == this.message.id
@@ -84,7 +93,7 @@ export default {
     edit() {
       this.store.editMessage = this.message
     },
-    reply() {
+    replyMessage() {
       this.store.replyMessage = this.message
     }
   }

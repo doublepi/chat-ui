@@ -26,18 +26,6 @@ export default {
       type: Boolean,
       required: true
     },
-    messageStyling: {
-      type: Boolean,
-      required: true
-    },
-    showEdition: {
-      type: Boolean,
-      required: true
-    },
-    showDeletion: {
-      type: Boolean,
-      required: true
-    }
   },
   computed: {
     defaultChatIcon() {

@@ -12,14 +12,11 @@
       :title-image-url="titleImageUrl"
       :show-emoji="showEmoji"
       :show-file="showFile"
-      :show-edition="showEdition"
-      :show-deletion="showDeletion"
       :show-header="showHeader"
       :placeholder="placeholder"
       :show-typing-indicator="showTypingIndicator"
       :colors="colors"
       :always-scroll-to-bottom="alwaysScrollToBottom"
-      :message-styling="messageStyling"
       @scrollToTop="$emit('scrollToTop')"
       @onType="$emit('onType')"
       @edit="$emit('edit', $event)"
@@ -36,7 +33,7 @@
           name="text-message-body"
           :message="scopedProps.message"
           :messageText="scopedProps.messageText"
-          :messageColors="scopedProps.messageColors"
+          :colors="scopedProps.colors"
           :me="scopedProps.me"
         >
         </slot>

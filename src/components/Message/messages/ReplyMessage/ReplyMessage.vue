@@ -3,7 +3,7 @@
 
 <template>
   <div
-    class="sc-typing-indicator"
+    class="sc-reply-message"
     :style="{
       backgroundColor: `${colors.bg}`,
       color: `${colors.text}`

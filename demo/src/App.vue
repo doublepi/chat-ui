@@ -8,15 +8,12 @@
       :alwaysScrollToBottom="alwaysScrollToBottom"
       :colors="colors"
       :messageList="messageList"
-      :messageStyling="messageStyling"
       :newMessagesCount="newMessagesCount"
       :onMessageWasSent="onMessageWasSent"
       :participants="participants"
       :showEmoji="true"
       :showFile="true"
       :showTypingIndicator="showTypingIndicator"
-      :showEdition="true"
-      :showDeletion="true"
       :sender="sender"
       :titleImageUrl="titleImageUrl"
       @onType="handleOnType"
@@ -29,23 +26,9 @@
       </template>
     </chat-ui>
     <v-dialog/>
-    <p class="text-center messageStyling">
-      <label>Message styling enabled?
-        <input
-          @change="messageStylingToggled"
-          checked
-          type="checkbox"
-        >
-      </label>
-      <a
-        @click.prevent="showStylingInfo()"
-        href="#"
-      >info</a>
-    </p>
     <TestArea
       :chosenColor="chosenColor"
       :colors="colors"
-      :messageStyling="messageStyling"
       :onMessage="sendMessage"
       :onTyping="handleTyping"
     />
@@ -78,7 +61,6 @@ export default {
       availableColors,
       chosenColor: null,
       alwaysScrollToBottom: true,
-      messageStyling: true,
       userIsTyping: false,
       sender: {
         id: 'giuliandrimba',
@@ -123,9 +105,6 @@ export default {
         text:
           'You can use *word* to <strong>boldify</strong>, /word/ to <em>emphasize</em>, _word_ to <u>underline</u>, `code` to <code>write = code;</code>, ~this~ to <del>delete</del> and ^sup^ or ¡sub¡ to write <sup>sup</sup> and <sub>sub</sub>'
       })
-    },
-    messageStylingToggled(e) {
-      this.messageStyling = e.target.checked
     },
     handleOnType() {
       this.$root.$emit('onType')
@@ -230,9 +209,5 @@ body {
 
 .toggle a {
   text-decoration: none;
-}
-
-.messageStyling {
-  font-size: small;
 }
 </style>

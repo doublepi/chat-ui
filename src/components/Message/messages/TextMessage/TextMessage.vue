@@ -12,6 +12,7 @@
       >
       </Actions>
       <button
+        v-if="me"
         class="sc-message--more"
         @click="toggleAction"
         :style="{color: messageColors.color}"
@@ -20,15 +21,14 @@
     </template>
     <slot :message="message" :messageText="messageText" :messageColors="messageColors" :me="me">
       <p class="sc-message--text-author"> {{ message.author }}</p>
+      <ReplyMessage
+        v-if="reply"
+        :message="reply"
+        :colors="colors.replyMessage"
+      />
       <p class="sc-message--text-content" v-html="messageText"></p>
       <p v-if="message.data.meta" class="sc-message--meta" :style="{color: messageColors.color}">
         {{ message.data.meta }}
-      </p>
-      <p v-if="message.isEdited" class="sc-message--edited">
-        <IconBase width="10" icon-name="edited">
-          <IconEdit />
-        </IconBase>
-        edited
       </p>
     </slot>
   </div>

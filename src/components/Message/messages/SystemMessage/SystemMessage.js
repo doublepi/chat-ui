@@ -4,7 +4,7 @@ export default {
       type: Object,
       required: true
     },
-    messageColors: {
+    colors: {
       type: Object,
       required: true
     }

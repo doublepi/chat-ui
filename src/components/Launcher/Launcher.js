@@ -46,21 +46,6 @@ export default {
     },
     colors: {
       type: Object,
-      validator: (c) =>
-        'header' in c &&
-        'bg' in c.header &&
-        'text' in c.header &&
-        'messageList' in c &&
-        'bg' in c.messageList &&
-        'sentMessage' in c &&
-        'bg' in c.sentMessage &&
-        'text' in c.sentMessage &&
-        'receivedMessage' in c &&
-        'bg' in c.receivedMessage &&
-        'text' in c.receivedMessage &&
-        'userInput' in c &&
-        'bg' in c.userInput &&
-        'text' in c.userInput,
       default: function () {
         return {
           header: {

@@ -40,6 +40,10 @@ export default {
       type: String,
       default: 'Write a message...'
     },
+    maxlength: {
+      type: Number,
+      default: 200
+    },
     showTypingIndicator: {
       type: String,
       default: () => ''
@@ -53,19 +57,22 @@ export default {
             text: '#0a0a0a'
           },
           messageList: {
-            bg: '#ffffff'
+            bg: '#ffffff',
+            quickActions: '#5F6368'
           },
           sentMessage: {
             bg: '#f4f7f9',
-            text: '#282828'
+            text: '#282828',
+            author: '#282828'
           },
           replyMessage: {
             bg: '#ffffff',
-            text: '#888888'
+            text: '#888888',
           },
           receivedMessage: {
             bg: '#f4f7f9',
-            text: '#282828'
+            text: '#282828',
+            author: '#282828'
           },
           userInput: {
             bg: '#f4f7f9',

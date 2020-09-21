@@ -59,6 +59,9 @@ export default {
     quickActions: {
       type: Array,
     },
+    maxlength: {
+      type: Number,
+    }
   },
   data() {
     return {

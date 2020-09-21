@@ -11,6 +11,7 @@
       :participants="participants"
       :title="chatWindowTitle"
       :title-image-url="titleImageUrl"
+      :maxlength="maxlength"
       :show-header="showHeader"
       :placeholder="placeholder"
       :show-typing-indicator="showTypingIndicator"

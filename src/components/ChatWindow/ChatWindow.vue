@@ -56,6 +56,7 @@
       :suggestions="getSuggestions()"
       :placeholder="placeholder"
       :colors="colors"
+      :maxlength="maxlength"
       @onType="$emit('onType')"
       @edit="$emit('edit', $event)"
       @reply="$emit('reply', $event)"

@@ -13,6 +13,7 @@
       :sender="sender"
       :titleImageUrl="titleImageUrl"
       :quickActions="quickActions"
+      :maxlength="10"
       @onType="handleOnType"
       @edit="editMessage"
       @reply="replyMessage"

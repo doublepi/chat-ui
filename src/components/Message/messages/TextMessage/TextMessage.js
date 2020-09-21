@@ -70,13 +70,15 @@ export default {
     receivedColorsStyle() {
       return {
         color: this.colors.receivedMessage.text,
-        backgroundColor: this.colors.receivedMessage.bg
+        backgroundColor: this.colors.receivedMessage.bg,
+        author: this.colors.receivedMessage.author,
       }
     },
     sentColorsStyle() {
       return {
         color: this.colors.sentMessage.text,
-        backgroundColor: this.colors.sentMessage.bg
+        backgroundColor: this.colors.sentMessage.bg,
+        author: this.colors.sentMessage.author,
       }
     },
     messageColors() {

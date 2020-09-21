@@ -6,6 +6,7 @@ import store from '../../store/'
 import IconCross from '../IconBase/icons/IconCross.vue'
 import IconOk from '../IconBase/icons/IconOk.vue'
 import IconSend from '../IconBase/icons/IconSend.vue'
+import chatIcon from '../../assets/chat-icon.svg'
 
 export default {
   components: {
@@ -48,12 +49,17 @@ export default {
       type: Object,
       required: true
     },
+    maxlength: {
+      type: Number,
+      default: 200
+    },
   },
   data() {
     return {
       file: null,
       inputActive: false,
-      store
+      store,
+      numchars: 0,
     }
   },
   computed: {
@@ -72,15 +78,19 @@ export default {
     replyMessageId() {
       return store.replyMessage ? store.replyMessage.id : null;
     },
+    chatImageUrl() {
+      return (store.sender && store.sender.imageUrl) || chatIcon
+    },
   },
   watch: {
     editMessageId(m) {
       if (store.editMessage != null && store.editMessage != undefined) {
         this.$refs.userInput.focus()
-        this.$refs.userInput.textContent = store.editMessage.data.text
+        this.$refs.userInput.textContent = store.editMessage.data.text.substring(0, this.maxlength);
       } else {
         this.$refs.userInput.textContent = ''
       }
+      this.numchars = this.$refs.userInput.textContent.length;
     }
   },
   mounted() {
@@ -95,6 +105,11 @@ export default {
       this.inputActive = onoff
     },
     handleKey(event) {
+
+      if (this.$refs.userInput.textContent.length >= this.maxlength && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40) {
+        event.preventDefault();
+      }
+
       if (event.keyCode === 13 && !event.shiftKey) {
         if (!this.isEditing) {
           this._submitText(event)
@@ -107,8 +122,16 @@ export default {
         this._editFinish()
         event.preventDefault()
       }
-
+      this.numchars = this.$refs.userInput.textContent.length;
       this.$emit('onType')
+    },
+    handlePaste(event) {
+      setTimeout(() => {
+        if (this.$refs.userInput.textContent.length >= this.maxlength && event.keyCode != 8) {
+          this.$refs.userInput.textContent = this.$refs.userInput.textContent.substring(0, this.maxlength);
+        }
+        this.numchars = this.$refs.userInput.textContent.length;
+      })
     },
     focusUserInput() {
       this.$nextTick(() => {
@@ -124,12 +147,14 @@ export default {
           function (wasSuccessful) {
             if (wasSuccessful === undefined || wasSuccessful) {
               this.$refs.userInput.innerHTML = ''
+              this.numchars = 0;
               store.replyMessage = null;
             }
           }.bind(this)
         )
       } else {
         this.$refs.userInput.innerHTML = ''
+        this.numchars = 0;
       }
     },
     _submitText(event) {

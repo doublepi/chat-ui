@@ -35,6 +35,12 @@
       :style="{background: colors.userInput.bg}"
     >
       <div
+        class="sc-user-input--avatar"
+        :style="{
+          backgroundImage: `url(${chatImageUrl})`
+        }"
+      ></div>
+      <div
         ref="userInput"
         role="button"
         tabIndex="0"
@@ -42,9 +48,12 @@
         :placeholder="placeholder"
         class="sc-user-input--text"
         :style="{color: colors.userInput.text}"
+        :maxlength="maxlength"
         @focus="setInputActive(true)"
         @blur="setInputActive(false)"
         @keydown="handleKey"
+        @keyup="handleKey"
+        @paste="handlePaste"
         @focusUserInput="focusUserInput()"
       ></div>
       <div class="sc-user-input--buttons">
@@ -77,6 +86,10 @@
           </UserInputButton>
         </div>
       </div>
+        <p
+          class="sc-user-input--maxlength"
+          :style="{ color: colors.messageList.quickActions }"
+        >{{ numchars}} / {{ maxlength}}</p>
     </form>
   </div>
 </template>

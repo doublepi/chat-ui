@@ -22,8 +22,8 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
-  min-width: 30px;
-  min-height: 30px;
+  min-width: 24px;
+  min-height: 24px;
   border-radius: 50%;
   align-self: flex-start;
   margin-right: 15px;
@@ -68,7 +68,6 @@
 }
 .sc-message--content.sent .sc-message--text {
   color: white;
-  background-color: #4e8cff;
   word-wrap: break-word;
   width: 100%;
 }
@@ -78,8 +77,6 @@
 }
 
 .sc-message--content.received .sc-message--text {
-  color: #263238;
-  background-color: #f4f7f9;
   width: 100%;
 }
 

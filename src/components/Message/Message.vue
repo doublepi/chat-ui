@@ -29,6 +29,7 @@
           :message="message"
           :reply="reply"
           :colors="colors"
+          :copy="copy"
           :quickActions="quickActions"
           @remove="$emit('remove')"
         >
@@ -42,11 +43,12 @@
             </slot>
           </template>
         </TextMessage>
-        <TypingMessage v-else-if="message.type === 'typing'" :colors="colors" />
+        <TypingMessage v-else-if="message.type === 'typing'" :colors="colors" :copy="copy" />
         <SystemMessage
           v-else-if="message.type === 'system'"
           :data="message.data"
           :colors="colors"
+          :copy="copy"
         >
           <slot name="system-message-body" :message="message.data"> </slot>
         </SystemMessage>

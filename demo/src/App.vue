@@ -1,34 +1,34 @@
 <template>
-  <div :style="{background: backgroundColor}">
-    <Header
-      :colors="colors"
-    />
-    <chat-ui
-      :alwaysScrollToBottom="alwaysScrollToBottom"
-      :colors="colors"
-      :messageList="messageList"
-      :onMessageWasSent="onMessageWasSent"
-      :participants="participants"
-      :showTypingIndicator="showTypingIndicator"
-      :sender="sender"
-      :titleImageUrl="titleImageUrl"
-      :quickActions="quickActions"
-      :maxlength="10"
-      @onType="handleOnType"
-      @edit="editMessage"
-      @reply="replyMessage"
-      @remove="removeMessage"
-    >
-      <template v-slot:system-message-body="{ message }">
-        [System 2]: {{message.text}}
-      </template>
-    </chat-ui>
-    <v-dialog/>
+  <div class='app' :style="{background: backgroundColor}">
     <TestArea
+      class='test-area'
       :colors="colors"
       :onMessage="sendMessage"
       :onTyping="handleTyping"
     />
+    <div class='chat-wrapper'>
+      <chat-ui
+        :alwaysScrollToBottom="alwaysScrollToBottom"
+        :colors="colors"
+        :show-header="false"
+        :messageList="messageList"
+        :onMessageWasSent="onMessageWasSent"
+        :participants="participants"
+        :showTypingIndicator="showTypingIndicator"
+        :sender="sender"
+        :titleImageUrl="titleImageUrl"
+        :quickActions="quickActions"
+        :maxlength="10"
+        @onType="handleOnType"
+        @edit="editMessage"
+        @reply="replyMessage"
+        @remove="removeMessage"
+      >
+        <template v-slot:system-message-body="{ message }">
+          [System 2]: {{message.text}}
+        </template>
+      </chat-ui>
+    </div>
   </div>
 </template>
 
@@ -52,7 +52,34 @@ export default {
         'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
       messageList: messageHistory,
       showTypingIndicator: '',
-      colors: availableColors.blue,
+      colors: {
+        header: {
+          bg: '#ffffff',
+          text: '#0a0a0a',
+        },
+        messageList: {
+          bg: '#F8F9FA',
+          quickActions: '#5F6368',
+        },
+        sentMessage: {
+          bg: '#ffffff',
+          text: '#202124',
+          author: '#202124',
+        },
+        replyMessage: {
+          bg: '#ffffff',
+          text: '#888888',
+        },
+        receivedMessage: {
+          bg: '#ffffff',
+          text: '#202124',
+          author: '#202124',
+        },
+        userInput: {
+          bg: '#f4f7f9',
+          text: '#565867',
+        },
+      }, // specifies the color scheme for the component
       availableColors,
       alwaysScrollToBottom: true,
       userIsTyping: false,
@@ -140,6 +167,18 @@ body {
   margin: 0px;
 }
 
+.app {
+  display: flex;
+  padding: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .app {
+    padding: 25px;
+    flex-direction: column;
+  }
+};
+
 * {
   font-family: Helvetica Neue, Helvetica, sans-serif;
 }
@@ -195,5 +234,11 @@ body {
 
 .toggle a {
   text-decoration: none;
+}
+
+.chat-wrapper {
+  width: 370px;
+  height: 500px;
+  position: relative;
 }
 </style>

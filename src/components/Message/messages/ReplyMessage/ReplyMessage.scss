@@ -1,15 +1,12 @@
 .sc-reply-message {
-  text-align: center;
-  padding: 12px 15px;
+  text-align: left;
+  padding: 10px 10px 0;
   display: inline-block;
   background: #ffffff;
-  border: 1px solid #eeeeee;
   font-size: 12px;
   font-style: italic;
   width: calc(100% - 15px);
   box-sizing: border-box;
-  margin-top: 10px;
-  margin-bottom: 5px;
 }
 
 .sc-reply-message span {

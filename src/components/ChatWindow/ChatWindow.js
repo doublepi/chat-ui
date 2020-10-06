@@ -40,12 +40,12 @@ export default {
       type: Array,
       default: () => []
     },
-    placeholder: {
-      type: String,
-      default: 'Write a message...'
-    },
     showTypingIndicator: {
       type: String,
+      required: true
+    },
+    copy: {
+      type: Object,
       required: true
     },
     colors: {

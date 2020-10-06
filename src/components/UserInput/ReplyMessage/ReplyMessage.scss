@@ -1,15 +1,26 @@
-.sc-suggestions-row {
+.sc-reply-row {
   text-align: center;
   background: inherit;
+  position: relative;
+  display: flex;
 }
 
-.sc-suggestions-element {
+.sc-reply-element {
   text-align: center;
-  padding: 17px 20px;
+  padding: 10px 0;
   background: #ffffff;
-  border: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
   font-size: 14px;
   font-style: italic;
+  position: relative;
+  flex-direction: row;
+  width: calc(100% - 57px);
+}
+
+.sc-reply-element-wrapper {
+  padding: 15px;
+  font-size: 12px;
+  border-radius: 5px;
 }
 
 .sc-user-input--button:first-of-type {
@@ -18,11 +29,11 @@
 
 .sc-user-input--button {
   width: 30px;
-  height: 55px;
+  height: 100%;
   margin-left: 2px;
   margin-right: 2px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
+  align-self: center;
 }

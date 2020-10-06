@@ -41,9 +41,9 @@ export default {
       type: Function,
       required: true
     },
-    placeholder: {
-      type: String,
-      default: 'Write something...'
+    copy: {
+      type: Object,
+      required: true
     },
     colors: {
       type: Object,

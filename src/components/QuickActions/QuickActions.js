@@ -22,8 +22,10 @@ export default {
   },
   methods: {
     onClick(action) {
-      action.onClick(this.message, action);
-      this.$emit('action', this.message, action);
+      if (action.onClick) {
+        action.onClick(this.message, action);
+        this.$emit('action', this.message, action);
+      }
     },
   },
 }

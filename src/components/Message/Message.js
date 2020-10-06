@@ -24,6 +24,10 @@ export default {
       type: Object,
       required: true
     },
+    copy: {
+      type: Object,
+      required: true
+    },
     user: {
       type: Object,
       required: true

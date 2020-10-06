@@ -2,7 +2,9 @@
 <script src="./Launcher.js"></script>
 
 <template>
-  <div>
+  <div
+    class="sc-launcher"
+  >
     <ChatWindow
       :message-list="messageList"
       :sender="sender"
@@ -13,9 +15,9 @@
       :title-image-url="titleImageUrl"
       :maxlength="maxlength"
       :show-header="showHeader"
-      :placeholder="placeholder"
       :show-typing-indicator="showTypingIndicator"
       :colors="colors"
+      :copy="copy"
       :always-scroll-to-bottom="alwaysScrollToBottom"
       @scrollToTop="$emit('scrollToTop')"
       @onType="$emit('onType')"

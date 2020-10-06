@@ -25,6 +25,10 @@ export default {
       type: Array,
       required: false
     },
+    copy: {
+      type: Object,
+      required: true
+    },
     colors: {
       type: Object,
       required: true
@@ -44,15 +48,15 @@ export default {
       actionOpen: false,
       actions: [
         {
-          label: "Edit",
+          label: this.copy.edit,
           onClick: this.edit,
         },
         {
-          label: "Delete",
+          label: this.copy.delete,
           onClick: this.delete,
         },
         {
-          label: "Reply",
+          label: this.copy.reply,
           onClick: this.replyMessage,
         }
       ],

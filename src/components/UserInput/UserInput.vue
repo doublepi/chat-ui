@@ -13,8 +13,8 @@
       v-if="file"
       class="file-container"
       :style="{
-        backgroundColor: colors.userInput.text,
-        color: colors.userInput.bg
+        backgroundColor: colors.userInput.bg,
+        color: colors.userInput.text
       }"
     >
       <span class="icon-file-message"
@@ -31,7 +31,7 @@
     </div>
     <form
       class="sc-user-input"
-      :class="{active: inputActive}"
+      :class="{active: inputActive, reply: replyMessage}"
       :style="{background: colors.userInput.bg}"
     >
       <div
@@ -45,7 +45,7 @@
         role="button"
         tabIndex="0"
         contentEditable="true"
-        :placeholder="placeholder"
+        :placeholder="copy.placeholder"
         class="sc-user-input--text"
         :style="{color: colors.userInput.text}"
         :maxlength="maxlength"
@@ -61,7 +61,6 @@
         <div v-if="isEditing" class="sc-user-input--button">
           <UserInputButton
             :color="colors.userInput.text"
-            tooltip="cancel"
             @click.native.prevent="_editFinish"
           >
             <IconCross />
@@ -71,7 +70,6 @@
           <UserInputButton
             v-if="isEditing"
             :color="colors.userInput.text"
-            tooltip="Edit"
             @click.native.prevent="_editText"
           >
             <IconOk />
@@ -79,7 +77,6 @@
           <UserInputButton
             v-else
             :color="colors.userInput.text"
-            tooltip="Send"
             @click.native.prevent="_submitText"
           >
             <IconSend />

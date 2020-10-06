@@ -39,6 +39,7 @@
     <QuickActions
       :message="message"
       :colors="colors"
+      :copy="copy"
       :actions="quickActions"
     />
   </div>

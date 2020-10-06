@@ -2,7 +2,9 @@
 <script src="./ReplyMessage.js"></script>
 
 <template>
-  <div class="sc-suggestions-row" >
+  <div class="sc-reply-row"
+    :style="{background: colors.userInput.bg}"
+  >
     <div class="sc-user-input--button">
       <UserInputButton
         :color="colors.userInput.text"
@@ -13,13 +15,21 @@
       </UserInputButton>
     </div>
     <div
-      class="sc-suggestions-element"
+      class="sc-reply-element"
       :style="{
-        backgroundColor: `${colors.replyMessage.bg}`,
+        backgroundColor: `${colors.userInput.bg}`,
         color: `${colors.replyMessage.text}`
       }"
     >
-      {{ message.data.text }}
+      <div
+        :style="{
+          backgroundColor: `${colors.replyMessage.bg}`,
+          color: `${colors.replyMessage.text}`
+        }"
+        class="sc-reply-element-wrapper"
+      >
+        {{ message.data.text }}
+      </div>
     </div>
   </div>
 </template>

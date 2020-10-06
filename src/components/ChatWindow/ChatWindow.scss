@@ -1,11 +1,9 @@
 .sc-chat-window {
   width: 100%;
-  height: calc(100% - 120px);
+  height: 100%;
   max-height: 590px;
   position: relative;
   border: 1px solid #DADCE0;
-  right: 25px;
-  bottom: 100px;
   box-sizing: border-box;
   background: white;
   display: flex;

@@ -36,10 +36,6 @@ export default {
       type: Array,
       default: () => []
     },
-    placeholder: {
-      type: String,
-      default: 'Write a message...'
-    },
     maxlength: {
       type: Number,
       default: 200
@@ -47,6 +43,17 @@ export default {
     showTypingIndicator: {
       type: String,
       default: () => ''
+    },
+    copy: {
+      type: Object,
+      default: function () {
+        return {
+          edit: 'Edit',
+          delete: 'Delete',
+          reply: 'Reply',
+          placeholder: 'Write a message...',
+        }
+      }
     },
     colors: {
       type: Object,

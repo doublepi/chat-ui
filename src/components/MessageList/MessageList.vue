@@ -14,6 +14,7 @@
       :message="message"
       :user="profile(message.author)"
       :colors="colors"
+      :copy="copy"
       :quickActions="quickActions"
       :reply="replyMessage(message.reply)"
       @remove="$emit('remove', message)"
@@ -27,6 +28,7 @@
           :message="scopedProps.message"
           :messageText="scopedProps.messageText"
           :colors="scopedProps.colors"
+          :copy="scopedProps.copy"
           :me="scopedProps.me"
         >
         </slot>
@@ -44,6 +46,7 @@
       :message="{author: showTypingIndicator, type: 'typing'}"
       :user="profile(showTypingIndicator)"
       :colors="colors"
+      :copy="copy"
     />
   </div>
 </template>

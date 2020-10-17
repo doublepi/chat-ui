@@ -99,9 +99,6 @@ export default {
       return (store.editMessage && store.editMessage.id) == this.message.id
     }
   },
-  created() {
-    console.log(this.upvoting)
-  },
   methods: {
     toggleAction() {
       this.actionOpen = !this.actionOpen;

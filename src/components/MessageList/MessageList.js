@@ -41,6 +41,21 @@ export default {
   computed: {
     defaultChatIcon() {
       return chatIcon
+    },
+    messageList() {
+      if (this.upvoting) {
+        return this.messages.sort((a, b) => {
+          if (a.upvotes > b.upvotes) {
+            return -1;
+          }
+          if (a.upvotes < b.upvotes) {
+            return 1;
+          }
+          return 0;
+        })
+      } else {
+        return this.messages;
+      }
     }
   },
   mounted() {

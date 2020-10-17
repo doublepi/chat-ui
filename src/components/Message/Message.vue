@@ -73,7 +73,9 @@
               <path d="M0.942488 6L4.01059 2.2915L7.07869 6L8.02118 4.8583L4.01059 0L0 4.8583L0.942488 6Z" fill="white"/>
             </svg>
           </button>
-          <p>
+          <p
+            class="sc-message--upvote-count"
+          >
             {{ message.upvotes }}
           </p>
         </div>

@@ -87,7 +87,7 @@ export default {
         },
       }, // specifies the color scheme for the component
       availableColors,
-      alwaysScrollToBottom: true,
+      alwaysScrollToBottom: false,
       userIsTyping: false,
       quickActions: [
         {

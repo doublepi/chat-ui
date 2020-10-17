@@ -9,7 +9,7 @@
     @scroll="handleScroll"
   >
     <Message
-      v-for="(message, idx) in messages"
+      v-for="(message, idx) in messageList"
       :key="idx"
       :upvoting="upvoting"
       :message="message"

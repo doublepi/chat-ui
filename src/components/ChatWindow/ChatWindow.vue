@@ -23,6 +23,7 @@
     </Info>
     <MessageList
       v-if="!showInfo"
+      :upvoting="upvoting"
       :messages="messages"
       :participants="users"
       :show-typing-indicator="showTypingIndicator"
@@ -32,6 +33,7 @@
       :always-scroll-to-bottom="alwaysScrollToBottom"
       @scrollToTop="$emit('scrollToTop')"
       @remove="$emit('remove', $event)"
+      @upvote="onUpvote"
     >
       <template v-slot:user-avatar="scopedProps">
         <slot name="user-avatar" :user="scopedProps.user" :message="scopedProps.message"> </slot>

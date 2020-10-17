@@ -165,7 +165,8 @@ export default {
             author: store.sender.id,
             type: 'text',
             data: { text },
-            reply: this.replyMessageId
+            reply: this.replyMessageId,
+            upvotes: 0,
           })
         )
       }

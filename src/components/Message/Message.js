@@ -35,6 +35,10 @@ export default {
     reply: {
       type: Object,
       required: false
+    },
+    upvoting: {
+      type: Boolean,
+      required: false,
     }
   },
   computed: {
@@ -46,6 +50,15 @@ export default {
     },
     senderId() {
       return store.sender.id;
+    },
+  },
+  methods: {
+    upvote() {
+      if (!this.message.upvoted) {
+        this.$emit('upvote', this.message, this.user, +1)
+      } else {
+        this.$emit('upvote', this.message, this.user, -1)
+      }
     }
   }
 }

@@ -30,6 +30,10 @@ export default {
       type: Boolean,
       required: true
     },
+    upvoting: {
+      type: Boolean,
+      required: true
+    },
     quickActions: {
       type: Array,
     },
@@ -58,6 +62,9 @@ export default {
       const scrollTop = this.$refs.scrollList.scrollTop
       const scrollable = scrollTop > this.$refs.scrollList.scrollHeight - 600
       return this.alwaysScrollToBottom || scrollable
+    },
+    onUpvote(message, author, vote) {
+      this.$emit('upvote', message, author, vote)
     },
     replyMessage(id) {
       return this.messages.find(m => m.id === id);

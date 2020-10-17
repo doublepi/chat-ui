@@ -40,6 +40,10 @@ export default {
     reply: {
       type: Object,
       required: false
+    },
+    upvoting: {
+      type: Boolean,
+      required: false
     }
   },
   data() {
@@ -94,6 +98,9 @@ export default {
     isEditing() {
       return (store.editMessage && store.editMessage.id) == this.message.id
     }
+  },
+  created() {
+    console.log(this.upvoting)
   },
   methods: {
     toggleAction() {

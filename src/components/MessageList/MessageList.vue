@@ -11,6 +11,7 @@
     <Message
       v-for="(message, idx) in messages"
       :key="idx"
+      :upvoting="upvoting"
       :message="message"
       :user="profile(message.author)"
       :colors="colors"
@@ -18,6 +19,7 @@
       :quickActions="quickActions"
       :reply="replyMessage(message.reply)"
       @remove="$emit('remove', message)"
+      @upvote="onUpvote"
     >
       <template v-slot:user-avatar="scopedProps">
         <slot name="user-avatar" :user="scopedProps.user" :message="scopedProps.message"> </slot>

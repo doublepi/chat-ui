@@ -11,6 +11,7 @@
         :alwaysScrollToBottom="alwaysScrollToBottom"
         :colors="colors"
         :show-header="false"
+        :upvoting="true"
         :messageList="messageList"
         :onMessageWasSent="onMessageWasSent"
         :participants="participants"
@@ -23,6 +24,7 @@
         @edit="editMessage"
         @reply="replyMessage"
         @remove="removeMessage"
+        @upvote="upvoteMessage"
       >
         <template v-slot:system-message-body="{ message }">
           [System 2]: {{message.text}}
@@ -57,6 +59,10 @@ export default {
           bg: '#ffffff',
           text: '#0a0a0a',
         },
+        upvote: {
+            buttonBackground: '#4285f4',
+            buttonIcon: '#FFFFFF'
+          },
         messageList: {
           bg: '#F8F9FA',
           quickActions: '#5F6368',
@@ -124,7 +130,6 @@ export default {
       console.log('translate message', message);
     },
     replyMessage(message, replyID){
-      console.log("replyMessage");
       const m = this.messageList.find(m => m.id === message.id);
       m.reply = replyID;
     },
@@ -139,6 +144,16 @@ export default {
         m.type = 'system';
         m.data.text = 'This message has been removed';
       }
+    },
+    upvoteMessage(message, author, vote) {
+      const m = this.messageList.find(m => m.id === message.id);
+      m.upvotes += vote;
+      if (vote > 0) {
+        m.upvoted = true;
+      } else {
+        m.upvoted = false;
+      }
+      console.log('upvoteMessage', m)
     },
     like(id){
       const m = this.messageList.findIndex(m => m.id === id);

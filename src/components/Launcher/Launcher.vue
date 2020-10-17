@@ -9,6 +9,7 @@
       :message-list="messageList"
       :sender="sender"
       :quickActions="quickActions"
+      :upvoting="upvoting"
       :on-user-input-submit="onMessageWasSent"
       :participants="participants"
       :title="chatWindowTitle"
@@ -23,6 +24,7 @@
       @onType="$emit('onType')"
       @edit="$emit('edit', $event)"
       @remove="$emit('remove', $event)"
+      @upvote="onUpvote"
     >
       <template v-slot:header="scopedProps">
         <slot name="header" :onClick="scopedProps.onClick" :toggleAction="scopedProps.toggleAction"> </slot>

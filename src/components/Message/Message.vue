@@ -29,6 +29,7 @@
           :message="message"
           :reply="reply"
           :colors="colors"
+          :upvoting="upvoting"
           :copy="copy"
           :quickActions="quickActions"
           @remove="$emit('remove')"
@@ -54,6 +55,29 @@
         </SystemMessage>
 
       </div>
+
+      <slot name="upvote-button" :message="message">
+        <div
+          v-if="message.type !== 'system' && upvoting"
+          :title="authorName"
+          :class="['sc-message--upvote', message.upvoted ? 'upvoted' : '']"
+        >
+          <button
+            class="sc-message--upvote-button"
+            @click="upvote"
+            :style="{
+              backgroundColor: colors.upvote.buttonBackground
+            }"
+          >
+            <svg viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.942488 6L4.01059 2.2915L7.07869 6L8.02118 4.8583L4.01059 0L0 4.8583L0.942488 6Z" fill="white"/>
+            </svg>
+          </button>
+          <p>
+            {{ message.upvotes }}
+          </p>
+        </div>
+      </slot>
 
     </div>
   </div>

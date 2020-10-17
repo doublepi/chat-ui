@@ -12,6 +12,10 @@ export default {
       type: Boolean,
       default: true
     },
+    upvoting: {
+      type: Boolean,
+      default: false
+    },
     participants: {
       type: Array,
       required: true
@@ -72,6 +76,10 @@ export default {
             text: '#282828',
             author: '#282828'
           },
+          upvote: {
+            buttonBackground: '#4285f4',
+            buttonIcon: '#FFFFFF'
+          },
           replyMessage: {
             bg: '#ffffff',
             text: '#888888',
@@ -114,6 +122,9 @@ export default {
     openAndFocus() {
       this.open()
       this.$root.$emit('focusUserInput')
+    },
+    onUpvote(message, author, vote) {
+      this.$emit('upvote', message, author, vote);
     }
   }
 }

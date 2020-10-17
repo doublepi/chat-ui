@@ -29,6 +29,32 @@
   margin-right: 15px;
 }
 
+.sc-message--upvote {
+  align-self: flex-start;
+  margin-left: 15px;
+  &.upvoted .sc-message--upvote-button {
+    opacity: 0.5;
+  }
+}
+
+.sc-message--upvote .sc-message--upvote-button {
+  background-size: 100%;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.sc-message--upvote .sc-message--upvote-button svg {
+  width: 9px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .sc-message--meta {
   font-size: xx-small;
   margin-bottom: 0px;

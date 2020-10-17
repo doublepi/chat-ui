@@ -20,6 +20,10 @@ export default {
       type: Boolean,
       default: true
     },
+    upvoting: {
+      type: Boolean,
+      default: false
+    },
     participants: {
       type: Array,
       required: true
@@ -98,6 +102,9 @@ export default {
     },
     onClickBack() {
       this.showInfo = false;
+    },
+    onUpvote(message, author, vote) {
+      this.$emit('upvote', message, author, vote);
     }
   }
 }

@@ -6,14 +6,14 @@
     <div class="sc-message--box" :style="messageColors">
       <template>
         <Actions
-          v-if="actionOpen"
+          v-if="actionOpen && !upvoting"
           class="sc-message--actions"
           :actions="actions"
           @action="toggleAction"
         >
         </Actions>
         <button
-          v-if="me"
+          v-if="me && !upvoting"
           class="sc-message--more"
           @click="toggleAction"
           :style="{color: messageColors.color}"
@@ -37,6 +37,7 @@
       </slot>
     </div>
     <QuickActions
+      v-if="!upvoting"
       :message="message"
       :colors="colors"
       :copy="copy"

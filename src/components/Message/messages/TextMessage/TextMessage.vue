@@ -24,7 +24,7 @@
         <p
           class="sc-message--text-author"
           :style="messageColors.author"
-        > {{ message.author }}</p>
+        > {{ message.authorName }}</p>
         <ReplyMessage
           v-if="reply"
           :message="reply"

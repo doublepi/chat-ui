@@ -37,6 +37,10 @@ export default {
       type: Boolean,
       default: () => false
     },
+    enableNewLine: {
+      type: Boolean,
+      default: () => false
+    },
     onSubmit: {
       type: Function,
       required: true
@@ -94,6 +98,9 @@ export default {
     }
   },
   mounted() {
+    if (!this.enableNewLine) {
+
+    }
     this.$root.$on('focusUserInput', () => {
       if (this.$refs.userInput) {
         this.focusUserInput()
@@ -105,6 +112,11 @@ export default {
       this.inputActive = onoff
     },
     handleKey(event) {
+
+      if (event.keyCode === 13 && event.shiftKey && !this.enableNewLine) {
+        event.preventDefault()
+        return;
+      }
 
       if (this.$refs.userInput.textContent.length >= this.maxlength && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40) {
         event.preventDefault();

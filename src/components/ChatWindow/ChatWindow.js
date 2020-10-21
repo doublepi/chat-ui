@@ -20,6 +20,10 @@ export default {
       type: Boolean,
       default: true
     },
+    enableNewLine: {
+      type: Boolean,
+      default: true
+    },
     upvoting: {
       type: Boolean,
       default: false

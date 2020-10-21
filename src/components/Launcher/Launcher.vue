@@ -18,6 +18,7 @@
       :show-header="showHeader"
       :show-typing-indicator="showTypingIndicator"
       :colors="colors"
+      :enable-new-line="enableNewLine"
       :copy="copy"
       :always-scroll-to-bottom="alwaysScrollToBottom"
       @scrollToTop="$emit('scrollToTop')"

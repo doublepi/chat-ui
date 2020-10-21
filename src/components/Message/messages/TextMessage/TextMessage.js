@@ -50,20 +50,7 @@ export default {
     return {
       store,
       actionOpen: false,
-      actions: [
-        {
-          label: this.copy.edit,
-          onClick: this.edit,
-        },
-        {
-          label: this.copy.delete,
-          onClick: this.delete,
-        },
-        {
-          label: this.copy.reply,
-          onClick: this.replyMessage,
-        }
-      ],
+      actions: [],
     }
   },
   computed: {
@@ -98,6 +85,18 @@ export default {
     isEditing() {
       return (store.editMessage && store.editMessage.id) == this.message.id
     }
+  },
+  created() {
+    if (this.me) {
+      this.actions.push({
+        label: this.copy.delete,
+        onClick: this.delete,
+      })
+    }
+    this.actions.push({
+      label: this.copy.reply,
+      onClick: this.replyMessage,
+    })
   },
   methods: {
     toggleAction() {

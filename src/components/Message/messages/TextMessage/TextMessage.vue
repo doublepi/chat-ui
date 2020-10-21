@@ -13,7 +13,7 @@
         >
         </Actions>
         <button
-          v-if="me && !upvoting"
+          v-if="!upvoting"
           class="sc-message--more"
           @click="toggleAction"
           :style="{color: messageColors.color}"

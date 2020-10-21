@@ -59,6 +59,7 @@
       :on-submit="onUserInputSubmit"
       :suggestions="getSuggestions()"
       :copy="copy"
+      :enable-new-line="enableNewLine"
       :colors="colors"
       :maxlength="maxlength"
       @onType="$emit('onType')"

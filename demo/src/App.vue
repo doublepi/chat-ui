@@ -11,7 +11,7 @@
         :alwaysScrollToBottom="alwaysScrollToBottom"
         :colors="colors"
         :show-header="false"
-        :upvoting="true"
+        :upvoting="false"
         :messageList="messageList"
         :onMessageWasSent="onMessageWasSent"
         :participants="participants"

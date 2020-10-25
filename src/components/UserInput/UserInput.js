@@ -68,7 +68,7 @@ export default {
   },
   computed: {
     editMessageId() {
-      return this.isEditing && store.editMessage.id
+      return this.isEditing;
     },
     replyMessage() {
       return store.replyMessage;
@@ -87,9 +87,15 @@ export default {
     },
   },
   watch: {
+    replyMessage() {
+      if (store.replyMessage != null && store.replyMessage != undefined) {
+        this.$refs.userInput.focus();
+      }
+    },
     editMessageId(m) {
       if (store.editMessage != null && store.editMessage != undefined) {
-        this.$refs.userInput.focus()
+        this.$refs.userInput.focus();
+        console.log("FOCUS")
         this.$refs.userInput.textContent = store.editMessage.data.text.substring(0, this.maxlength);
       } else {
         this.$refs.userInput.textContent = ''
@@ -98,6 +104,7 @@ export default {
     }
   },
   mounted() {
+    console.log(store.editMessage !== null)
     if (!this.enableNewLine) {
 
     }

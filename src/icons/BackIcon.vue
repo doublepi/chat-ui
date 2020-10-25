@@ -49,10 +49,6 @@ export default {
   height: 100%;
 }
 
-.sc-user-input--back-icon-wrapper:focus {
-  outline: none;
-}
-
 .sc-user-input--back-icon {
   height: 18px;
   cursor: pointer;

@@ -7,6 +7,7 @@
   >
     <div class="sc-user-input--button">
       <UserInputButton
+        :label="copy.cancel"
         :color="colors.userInput.text"
         tooltip="cancel"
         @click.native.prevent="cancelReply"

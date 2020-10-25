@@ -15,6 +15,10 @@ export default {
       type: Object,
       required: true
     },
+    copy: {
+      type: Object,
+      required: true
+    },
   },
   methods: {
     cancelReply() {

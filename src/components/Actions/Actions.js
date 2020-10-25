@@ -15,7 +15,7 @@ export default {
       this.$emit('action', action);
     },
     onClickOutside(event) {
-      this.$emit('action');
+      this.$emit('close');
     }
   },
 }

@@ -60,6 +60,9 @@ export default {
           delete: 'Delete',
           reply: 'Reply',
           placeholder: 'Write a message...',
+          viewMore: 'More',
+          send: 'Send',
+          cancel: 'Cancel',
         }
       }
     },

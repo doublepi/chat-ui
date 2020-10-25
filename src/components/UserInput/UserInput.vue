@@ -7,6 +7,7 @@
       v-if="replyMessage"
       :message="replyMessage"
       :colors="colors"
+      :copy="copy"
     />
     <Suggestions :suggestions="suggestions" :colors="colors" @sendSuggestion="_submitSuggestion" />
     <div
@@ -40,7 +41,7 @@
           backgroundImage: `url(${chatImageUrl})`
         }"
       ></div>
-      <div
+      <input
         ref="userInput"
         role="button"
         tabIndex="0"
@@ -55,11 +56,12 @@
         @keyup="handleKey"
         @paste="handlePaste"
         @focusUserInput="focusUserInput()"
-      ></div>
+      ></input>
       <div class="sc-user-input--buttons">
         <div class="sc-user-input--button"></div>
         <div v-if="isEditing" class="sc-user-input--button">
           <UserInputButton
+            :label="copy.send"
             :color="colors.userInput.text"
             @click.native.prevent="_editFinish"
           >
@@ -69,6 +71,7 @@
         <div class="sc-user-input--button">
           <UserInputButton
             v-if="isEditing"
+            :label="copy.send"
             :color="colors.userInput.text"
             @click.native.prevent="_editText"
           >
@@ -76,7 +79,9 @@
           </UserInputButton>
           <UserInputButton
             v-else
+            :label="copy.send"
             :color="colors.userInput.text"
+            @keydown="onEnterKey"
             @click.native.prevent="_submitText"
           >
             <IconSend />

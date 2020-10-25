@@ -104,6 +104,7 @@ export default {
   },
   methods: {
     sendMessage(text) {
+      console.log('endMessage')
       if (text.length > 0) {
         this.onMessageWasSent({
           author: 'support',

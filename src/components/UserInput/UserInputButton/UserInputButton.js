@@ -17,10 +17,5 @@ export default {
       type: String,
       default: ''
     }
-  },
-  methods: {
-    keydown(event) {
-      this.$emit('keydown', event)
-    }
   }
 }

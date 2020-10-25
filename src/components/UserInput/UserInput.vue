@@ -81,7 +81,6 @@
             v-else
             :label="copy.send"
             :color="colors.userInput.text"
-            @keydown="onEnterKey"
             @click.native.prevent="_submitText"
           >
             <IconSend />

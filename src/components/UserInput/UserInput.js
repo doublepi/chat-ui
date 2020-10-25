@@ -96,11 +96,11 @@ export default {
       if (store.editMessage != null && store.editMessage != undefined) {
         this.$refs.userInput.focus();
         console.log("FOCUS")
-        this.$refs.userInput.textContent = store.editMessage.data.text.substring(0, this.maxlength);
+        this.$refs.userInput.value = store.editMessage.data.text.substring(0, this.maxlength);
       } else {
-        this.$refs.userInput.textContent = ''
+        this.$refs.userInput.value = ''
       }
-      this.numchars = this.$refs.userInput.textContent.length;
+      this.numchars = this.$refs.userInput.value.length;
     }
   },
   mounted() {
@@ -125,7 +125,7 @@ export default {
         return;
       }
 
-      if (this.$refs.userInput.textContent.length >= this.maxlength && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40) {
+      if (this.$refs.userInput.value.length >= this.maxlength && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40) {
         event.preventDefault();
       }
 
@@ -141,15 +141,15 @@ export default {
         this._editFinish()
         event.preventDefault()
       }
-      this.numchars = this.$refs.userInput.textContent.length;
+      this.numchars = this.$refs.userInput.value.length;
       this.$emit('onType')
     },
     handlePaste(event) {
       setTimeout(() => {
-        if (this.$refs.userInput.textContent.length >= this.maxlength && event.keyCode != 8) {
-          this.$refs.userInput.textContent = this.$refs.userInput.textContent.substring(0, this.maxlength);
+        if (this.$refs.userInput.value.length >= this.maxlength && event.keyCode != 8) {
+          this.$refs.userInput.value = this.$refs.userInput.value.substring(0, this.maxlength);
         }
-        this.numchars = this.$refs.userInput.textContent.length;
+        this.numchars = this.$refs.userInput.value.length;
       })
     },
     focusUserInput() {
@@ -165,7 +165,7 @@ export default {
         Promise.resolve(success).then(
           function (wasSuccessful) {
             if (wasSuccessful === undefined || wasSuccessful) {
-              this.$refs.userInput.innerHTML = ''
+              this.$refs.userInput.value = ''
               this.numchars = 0;
               store.replyMessage = null;
             }
@@ -177,7 +177,7 @@ export default {
       }
     },
     _submitText(event) {
-      const text = this.$refs.userInput.textContent
+      const text = this.$refs.userInput.value
       if (text && text.length > 0) {
         this._checkSubmitSuccess(
           this.onSubmit({
@@ -191,7 +191,7 @@ export default {
       }
     },
     _editText(event) {
-      const text = this.$refs.userInput.textContent
+      const text = this.$refs.userInput.value
       if (text && text.length) {
         this.$emit('edit', {
           author: store.sender.id,

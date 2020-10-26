@@ -63,6 +63,7 @@ export default {
           viewMore: 'More',
           send: 'Send',
           cancel: 'Cancel',
+          vote: 'Vote',
         }
       }
     },

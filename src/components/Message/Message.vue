@@ -64,6 +64,7 @@
         >
           <button
             class="sc-message--upvote-button"
+            :aria-label="copy.vote"
             @click="upvote"
             :style="{
               backgroundColor: colors.upvote.buttonBackground

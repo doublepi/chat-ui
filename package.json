@@ -1,6 +1,6 @@
 {
   "name": "@doublepi/chat-ui",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "A simple Vue chat component backend agnostic.",
   "main": "./dist/chat-ui.umd.min.js",
   "repository": "https://github.com/doublepi/chat-ui",

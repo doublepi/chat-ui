@@ -45,10 +45,10 @@ export default {
     messageList() {
       if (this.upvoting) {
         return this.messages.sort((a, b) => {
-          if (a.upvotes > b.upvotes) {
+          if (parseInt(a.upvotes, 10) > parseInt(b.upvotes, 10)) {
             return -1;
           }
-          if (a.upvotes < b.upvotes) {
+          if (parseInt(a.upvotes, 10) < parseInt(b.upvotes, 10)) {
             return 1;
           }
           return 0;

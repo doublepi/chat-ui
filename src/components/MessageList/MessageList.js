@@ -59,10 +59,13 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(this._scrollDown())
+    console.log("alwaysScrollToBottom", this.alwaysScrollToBottom)
+    if (this.alwaysScrollToBottom) {
+      this.$nextTick(this._scrollDown())
+    }
   },
   updated() {
-    if (this.shouldScrollToBottom()) this.$nextTick(this._scrollDown())
+    if (this.alwaysScrollToBottom) this.$nextTick(this._scrollDown())
   },
   methods: {
     _scrollDown() {
@@ -74,9 +77,7 @@ export default {
       }
     },
     shouldScrollToBottom() {
-      const scrollTop = this.$refs.scrollList.scrollTop
-      const scrollable = scrollTop > this.$refs.scrollList.scrollHeight - 600
-      return this.alwaysScrollToBottom || scrollable
+      return this.alwaysScrollToBottom;
     },
     onUpvote(message, author, vote) {
       this.$emit('upvote', message, author, vote)

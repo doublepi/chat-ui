@@ -44,7 +44,7 @@ export default {
     },
     messageList() {
       if (this.upvoting) {
-        return this.messages.sort((a, b) => {
+        const sorted = this.messages.sort((a, b) => {
           if (parseInt(a.upvotes, 10) > parseInt(b.upvotes, 10)) {
             return -1;
           }
@@ -53,25 +53,37 @@ export default {
           }
           return 0;
         })
+        return sorted;
       } else {
         return this.messages;
       }
     }
   },
   mounted() {
-    console.log("alwaysScrollToBottom", this.alwaysScrollToBottom)
     if (this.alwaysScrollToBottom) {
       this.$nextTick(this._scrollDown())
     }
   },
   updated() {
-    if (this.alwaysScrollToBottom) this.$nextTick(this._scrollDown())
+    if (this.alwaysScrollToBottom) {
+      if (this.$refs.scrollList.scrollTop >= (this.$refs.scrollList.scrollHeight - this.$refs.scrollList.offsetHeight - 100)) {
+        this.$nextTick(this._scrollDown())
+      }
+    }
   },
   methods: {
     _scrollDown() {
+      this.$refs.btScrollDown.classList.remove('show');
       this.$refs.scrollList.scrollTop = this.$refs.scrollList.scrollHeight
     },
     handleScroll(e) {
+      if (this.alwaysScrollToBottom) {
+        if (this.$refs.scrollList.scrollTop >= (this.$refs.scrollList.scrollHeight - this.$refs.scrollList.offsetHeight - 100)) {
+          this.$refs.btScrollDown.classList.remove('show');
+        } else {
+          this.$refs.btScrollDown.classList.add('show');
+        }
+      }
       if (e.target.scrollTop === 0) {
         this.$emit('scrollToTop')
       }

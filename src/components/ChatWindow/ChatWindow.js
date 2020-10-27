@@ -101,6 +101,10 @@ export default {
     getSuggestions() {
       return this.messages.length > 0 ? this.messages[this.messages.length - 1].suggestions : []
     },
+    onInputUser(message) {
+      this.$refs.messageList._scrollDown();
+      this.onUserInputSubmit(message)
+    },
     onInfo() {
       this.showInfo = true;
     },

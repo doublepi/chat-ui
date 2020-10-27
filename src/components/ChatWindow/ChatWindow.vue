@@ -22,6 +22,7 @@
       </template>
     </Info>
     <MessageList
+      ref="messageList"
       v-if="!showInfo"
       :upvoting="upvoting"
       :messages="messages"
@@ -56,7 +57,7 @@
 
     <UserInput
       v-if="!showInfo"
-      :on-submit="onUserInputSubmit"
+      :on-submit="onInputUser"
       :suggestions="getSuggestions()"
       :copy="copy"
       :enable-new-line="enableNewLine"

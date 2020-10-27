@@ -8,10 +8,10 @@
     />
     <div class='chat-wrapper'>
       <chat-ui
-        :alwaysScrollToBottom="alwaysScrollToBottom"
+        :alwaysScrollToBottom="false"
         :colors="colors"
         :show-header="false"
-        :upvoting="false"
+        :upvoting="true"
         :messageList="messageList"
         :onMessageWasSent="onMessageWasSent"
         :participants="participants"
@@ -104,7 +104,6 @@ export default {
   },
   methods: {
     sendMessage(text) {
-      console.log('endMessage')
       if (text.length > 0) {
         this.onMessageWasSent({
           author: 'support',

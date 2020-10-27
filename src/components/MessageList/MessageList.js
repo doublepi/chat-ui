@@ -66,15 +66,26 @@ export default {
   },
   updated() {
     if (this.alwaysScrollToBottom) {
-      if (this.$refs.scrollList.scrollTop >= (this.$refs.scrollList.scrollHeight - this.$refs.scrollList.offsetHeight - 100)) {
+      if (this.$refs.scrollList.scrollTop >= (this.$refs.scrollList.scrollHeight - this.$refs.scrollList.offsetHeight * 2)) {
         this.$nextTick(this._scrollDown())
       }
     }
   },
   methods: {
+    checkScroll() {
+      if (this.alwaysScrollToBottom) {
+        if (this.$refs.scrollList.scrollTop >= (this.$refs.scrollList.scrollHeight - this.$refs.scrollList.offsetHeight - 100)) {
+          this.$refs.btScrollDown.classList.remove('show');
+        } else {
+          this.$refs.btScrollDown.classList.add('show');
+        }
+      }
+    },
     _scrollDown() {
-      this.$refs.btScrollDown.classList.remove('show');
-      this.$refs.scrollList.scrollTop = this.$refs.scrollList.scrollHeight
+      setTimeout(() => {
+        this.$refs.btScrollDown.classList.remove('show');
+        this.$refs.scrollList.scrollTop = this.$refs.scrollList.scrollHeight
+      })
     },
     handleScroll(e) {
       if (this.alwaysScrollToBottom) {

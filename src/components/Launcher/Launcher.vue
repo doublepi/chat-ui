@@ -6,6 +6,7 @@
     class="sc-launcher"
   >
     <ChatWindow
+      ref="chat"
       :message-list="messageList"
       :sender="sender"
       :quickActions="quickActions"

@@ -133,6 +133,12 @@ export default {
     },
     onUpvote(message, author, vote) {
       this.$emit('upvote', message, author, vote);
+    },
+    scrollDown() {
+      this.$refs.chat.scrollDown();
+    },
+    checkScroll() {
+      this.$refs.chat.checkScroll();
     }
   }
 }
